@@ -1,20 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" class="light"> <!-- 'dark' para modo escuro -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css">
-    <title>Document</title>
+    <title>EduTech Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        /* Ajuste fino para inputs ficarem iguais à imagem */
+        input,
+        select {
+            border-color: #e2e8f0;
+        }
+
+        .input-icon {
+            background-image: url('images/icons/users.svg');
+            /* Exemplo para os ícones dentro do input */
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 18px;
+        }
+    </style>
 </head>
-<body>
 
-    <header>
-        <div class="header-in m-xl">
-            <img class="logo w-4 h-auto" src="images/icons/logo.svg" alt="logo">
+<body class="bg-white dark:bg-slate-900 text-slate-800 dark:text-white transition-colors duration-300">
 
+    <!-- HEADER RESPONSIVO -->
+    <header class="border-b dark:border-slate-700 bg-white dark:bg-slate-900 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <img src="images/icons/logo.svg" alt="Logo" class="w-10">
+                <h1 class="text-blue-600 dark:text-blue-400 font-bold text-2xl">EduTech Academy</h1>
+            </div>
+
+            <!-- Menu Desktop -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600 dark:text-slate-300">
+                <a href="#" class="hover:text-blue-600 transition">Home</a>
+                <a href="#cursos" class="hover:text-blue-600 transition">Cursos</a>
+                <a href="#matricula" class="hover:text-blue-600 transition">Matrícula</a>
+                <a href="#" class="hover:text-blue-600 transition">Sobre</a>
+                <button id="theme-toggle-desktop" class="ml-4">
+                    <img id="moon-icon" src="images/icons/moon.svg" class="w-6 dark:invert" alt="Tema">
+                </button>
+            </nav>
+
+            <!-- Menu Mobile (Hamburguer) -->
+            <button class="md:hidden">
+                <img src="images/icons/menu.svg" alt="Menu" class="w-8 dark:invert">
+            </button>
         </div>
     </header>
-    
+
+    <main class="max-w-7xl mx-auto px-4 py-12">
+
+        <!-- HERO SECTION -->
+        <section class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">Construa Seu Futuro com a EduTech
+                Academy</h2>
+            <p class="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">
+                Cursos de alta qualidade para impulsionar sua carreira e transformar sua vida profissional.
+            </p>
+        </section>
+
+        <!-- CURSOS EM GRID -->
+        <section id="cursos" class="mb-20">
+            <h3 class="text-2xl font-bold mb-8">Nossos Cursos</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Card Individual (Repetir para todos) -->
+                <article
+                    class="flex flex-col border dark:border-slate-700 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition bg-white dark:bg-slate-800">
+                    <img src="images/fullstack.jpg" alt="Fullstack" class="w-full h-44 object-cover">
+
+                    <!-- Conteúdo do Card com Flexbox -->
+                    <div class="p-5 flex flex-col flex-1">
+                        <h4 class="font-bold text-lg mb-4 min-h-[3.5rem] flex items-center">
+                            Desenvolvimento Web Fullstack
+                        </h4>
+
+                        <div class="text-sm text-slate-500 space-y-2 mb-6">
+                            <p class="flex items-center gap-2"><img src="images/icons/clock.svg" class="w-4"> 120 horas
+                            </p>
+                            <p class="flex items-center gap-2"><img src="images/icons/map-pin.svg" class="w-4"> EAD</p>
+                        </div>
+
+                        <!-- mt-auto faz o botão ser empurrado para o fim do card -->
+                        <button
+                            class="mt-auto w-full bg-blue-600 text-white py-2.5 rounded-md font-semibold hover:bg-blue-700 transition">
+                            Ver detalhes
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Repita a estrutura acima para os outros 3 cursos, apenas mudando os textos -->
+                <!-- Card 2 -->
+                <article
+                    class="flex flex-col border dark:border-slate-700 rounded-xl overflow-hidden shadow-sm bg-white dark:bg-slate-800">
+                    <img src="images/data-science.jpg" alt="Data Science" class="w-full h-44 object-cover">
+                    <div class="p-5 flex flex-col flex-1">
+                        <h4 class="font-bold text-lg mb-4 min-h-[3.5rem] flex items-center">Data Science & Machine
+                            Learning</h4>
+                        <div class="text-sm text-slate-500 space-y-2 mb-6">
+                            <p class="flex items-center gap-2"><img src="images/icons/clock.svg" class="w-4"> 100 horas
+                            </p>
+                            <p class="flex items-center gap-2"><img src="images/icons/map-pin.svg" class="w-4">
+                                Presencial</p>
+                        </div>
+                        <button
+                            class="mt-auto w-full bg-blue-600 text-white py-2.5 rounded-md font-semibold hover:bg-blue-700 transition">Ver
+                            detalhes</button>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article
+                    class="flex flex-col border dark:border-slate-700 rounded-xl overflow-hidden shadow-sm bg-white dark:bg-slate-800">
+                    <img src="images/marketing.jpg" alt="Marketing" class="w-full h-44 object-cover">
+                    <div class="p-5 flex flex-col flex-1">
+                        <h4 class="font-bold text-lg mb-4 min-h-[3.5rem] flex items-center">Marketing Digital & SEO</h4>
+                        <div class="text-sm text-slate-500 space-y-2 mb-6">
+                            <p class="flex items-center gap-2"><img src="images/icons/clock.svg" class="w-4"> 80 horas
+                            </p>
+                            <p class="flex items-center gap-2"><img src="images/icons/map-pin.svg" class="w-4"> EAD</p>
+                        </div>
+                        <button
+                            class="mt-auto w-full bg-blue-600 text-white py-2.5 rounded-md font-semibold hover:bg-blue-700 transition">Ver
+                            detalhes</button>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article
+                    class="flex flex-col border dark:border-slate-700 rounded-xl overflow-hidden shadow-sm bg-white dark:bg-slate-800">
+                    <img src="images/ux-design.jpg" alt="UX Design" class="w-full h-44 object-cover">
+                    <div class="p-5 flex flex-col flex-1">
+                        <h4 class="font-bold text-lg mb-4 min-h-[3.5rem] flex items-center">UX/UI Design</h4>
+                        <div class="text-sm text-slate-500 space-y-2 mb-6">
+                            <p class="flex items-center gap-2"><img src="images/icons/clock.svg" class="w-4"> 90 horas
+                            </p>
+                            <p class="flex items-center gap-2"><img src="images/icons/map-pin.svg" class="w-4">
+                                Presencial</p>
+                        </div>
+                        <button
+                            class="mt-auto w-full bg-blue-600 text-white py-2.5 rounded-md font-semibold hover:bg-blue-700 transition">Ver
+                            detalhes</button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+        <!-- SEÇÃO MATRÍCULA (Lado a Lado no Desktop) -->
+        <div class="flex flex-col lg:flex-row gap-8 items-start" id="matricula">
+
+            <!-- Formulário (66% da largura) -->
+            <section class="w-full lg:w-2/3 border dark:border-slate-700 p-8 rounded-xl shadow-sm">
+                <h3 class="text-2xl font-bold mb-8">Formulário de Matrícula</h3>
+
+                <form id="form-matricula" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-1">
+                        <label class="block text-sm font-bold mb-2">Nome Completo *</label>
+                        <input type="text" id="nome" placeholder="Digite seu nome completo"
+                            class="w-full p-3 border rounded-md outline-none focus:border-blue-500 dark:bg-slate-800 dark:border-slate-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Email *</label>
+                        <input type="email" id="email" placeholder="Digite seu email"
+                            class="w-full p-3 border rounded-md outline-none dark:bg-slate-800 dark:border-slate-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Telefone *</label>
+                        <input type="text" id="telefone" placeholder="(00) 00000-0000"
+                            class="w-full p-3 border rounded-md outline-none dark:bg-slate-800 dark:border-slate-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-2">CPF *</label>
+                        <input type="text" id="cpf" placeholder="000.000.000-00"
+                            class="w-full p-3 border rounded-md outline-none dark:bg-slate-800 dark:border-slate-600">
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-bold mb-2">Curso Desejado *</label>
+                        <select id="curso"
+                            class="w-full p-3 border rounded-md outline-none bg-white dark:bg-slate-800 dark:border-slate-600">
+                            <option value="">Selecione um curso</option>
+                            <option value="fullstack">Web Fullstack</option>
+                            <option value="ds">Data Science</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-2">CEP *</label>
+                        <input type="text" id="cep" placeholder="00000-000"
+                            class="w-full p-3 border rounded-md outline-none dark:bg-slate-800 dark:border-slate-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Rua *</label>
+                        <input type="text" id="rua"
+                            class="w-full p-3 border rounded-md outline-none dark:bg-slate-800 dark:border-slate-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Bairro *</label>
+                        <input type="text" id="bairro"
+                            class="w-full p-3 border rounded-md outline-none dark:bg-slate-800 dark:border-slate-600">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Cidade *</label>
+                        <input type="text" id="cidade"
+                            class="w-full p-3 border rounded-md outline-none dark:bg-slate-800 dark:border-slate-600">
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-bold mb-2">Estado *</label>
+                        <input type="text" id="estado"
+                            class="w-full p-3 border rounded-md outline-none dark:bg-slate-800 dark:border-slate-600">
+                    </div>
+
+                    <button type="submit"
+                        class="bg-blue-600 text-white px-8 py-3 rounded-md font-bold hover:bg-blue-700 transition w-fit">Enviar
+                        Matrícula</button>
+                </form>
+            </section>
+
+            <!-- Áreas do Conhecimento (Lateral no Desktop) -->
+            <aside
+                class="w-full lg:w-1/3 border dark:border-slate-700 p-8 rounded-xl bg-slate-50/50 dark:bg-slate-800/30">
+                <h3 class="text-xl font-bold mb-6">Áreas do Conhecimento</h3>
+                <ul class="space-y-4 font-medium text-slate-700 dark:text-slate-300">
+                    <li class="hover:text-blue-600 cursor-pointer">Tecnologia da Informação</li>
+                    <li class="hover:text-blue-600 cursor-pointer">Administração e Negócios</li>
+                    <li class="hover:text-blue-600 cursor-pointer">Marketing Digital</li>
+                    <li class="hover:text-blue-600 cursor-pointer">Design Gráfico</li>
+                    <li class="hover:text-blue-600 cursor-pointer">Engenharia</li>
+                    <li class="hover:text-blue-600 cursor-pointer">Saúde</li>
+                    <li class="hover:text-blue-600 cursor-pointer">Educação</li>
+                    <li class="hover:text-blue-600 cursor-pointer">Gastronomia</li>
+                </ul>
+            </aside>
+        </div>
+    </main>
+
+    <!-- FOOTER EM COLUNAS -->
+    <footer class="border-t dark:border-slate-700 py-16 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+
+            <div>
+                <h2 class="text-xl font-bold mb-4">EduTech Academy</h2>
+                <p class="text-slate-500 text-sm leading-relaxed">
+                    Transformando carreiras através da educação de qualidade desde 2010.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="font-bold mb-4">Contato</h3>
+                <div class="text-slate-500 text-sm space-y-2">
+                    <p class="flex items-center justify-center md:justify-start gap-2">
+                        <img src="images/icons/phone.svg" class="w-4"> (11) 99999-9999
+                    </p>
+                    <p>contato@edutechacademy.com.br</p>
+                    <p>Av. Paulista, 1000 - São Paulo/SP</p>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-bold mb-4">Redes Sociais</h3>
+                <div class="flex justify-center md:justify-start gap-6">
+                    <img src="images/social/facebook.svg" class="w-6 cursor-pointer hover:opacity-75 dark:invert">
+                    <img src="images/social/instagram.svg" class="w-6 cursor-pointer hover:opacity-75 dark:invert">
+                    <img src="images/social/twitter.svg" class="w-6 cursor-pointer hover:opacity-75 dark:invert">
+                    <img src="images/social/linkedin.svg" class="w-6 cursor-pointer hover:opacity-75 dark:invert">
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-16 text-xs text-slate-400">
+            © 2025 EduTech Academy. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script src="scripts/scripts.js"></script>
 </body>
+
 </html>
